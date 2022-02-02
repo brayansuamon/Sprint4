@@ -1,0 +1,17 @@
+.header {
+  background-color: red;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px 0;
+}
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: blue;
+}
+.login {
+  text-align: center;
+  padding: 20px 0;
+}
