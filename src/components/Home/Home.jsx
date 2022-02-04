@@ -1,4 +1,5 @@
 import React from "react";
+import { login } from "../../firebase/getData";
 import styles from "./Home.module.scss";
 
 export default function Home(params) {
@@ -12,7 +13,7 @@ export default function Home(params) {
         <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
         <figure className={styles.google}>
           <img src="./images/Google.svg" alt="Google" />
-          <button>Sign in with Google</button>
+          <button onClick={login}>Sign in with Google</button>
         </figure>
       </form>
     </section>
