@@ -1,13 +1,13 @@
 import { React } from "react";
 import Home from "./components/Home/Home";
 import "./App.css";
-import Header from "./components/Profile/Header/Header";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   return (
     <div className="App">
       {/* <Home /> */}
-      <Header />
+      <Profile />
     </div>
   );
 }

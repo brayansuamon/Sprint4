@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import styles from "./Header.module.scss";
 import { auth, login, logout } from "../../../firebase/getData";
+import { Link } from "react-router-dom";
 export default function Header(params) {
   /* function INITIAL_USER(params) {
     uid: "";
@@ -26,13 +27,13 @@ export default function Header(params) {
         <div className={styles.navheader}>
           <header className={styles.header}>
             <span>
-              <img src="./images/back.png" alt="" />
+              <img src="./images/back.png" alt="Back" />
               {/* {userLog.displayName} */}
               brayansuamon
             </span>
             <button onClick={logout}>
               LOGOUT
-              <img src="./images/Logout.png" alt="" />
+              <img src="./images/Logout.png" alt="Log_out" />
             </button>
           </header>
           <section className={styles.profile}>
@@ -42,6 +43,20 @@ export default function Header(params) {
               brayansuamon
             </span>
           </section>
+          <nav>
+            <ul className={styles.navprofile}>
+              <li>
+                <Link className={styles.underlined} to="/post">
+                  POST
+                </Link>
+              </li>
+              <li>
+                <Link className={styles.underlined} to="/favorites">
+                  FAVORITES
+                </Link>
+              </li>
+            </ul>
+          </nav>
         </div>
       ) : (
         <div className={styles.login}>
