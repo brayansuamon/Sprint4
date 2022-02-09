@@ -1,14 +1,16 @@
 import React from "react";
 import styles from "./PostMessage.module.scss";
 
+const { body, header } = styles;
+
 function PostMessage(params) {
   return (
-    <div className={styles.body}>
-      <header className={styles.header}>
+    <div className={body}>
+      <header className={header}>
         <img src="./images/image_logo_devs.png" alt="Username" />
         <img src="./images/image_logo_devs.png" alt="Logo_devs" />
         <img
-          className={styles.textdev}
+          className={`${styles.textdev} ${styles.algo}`}
           src="./images/text_logo_devs.png"
           alt="Text_devs"
         />
