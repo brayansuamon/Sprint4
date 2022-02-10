@@ -1,8 +1,8 @@
 import React from "react";
+import styles from "./Nickname.module.scss";
 import { login } from "../../firebase/getData";
-import styles from "./Home.module.scss";
 
-export default function Home(params) {
+function Nickname(params) {
   return (
     <section className={styles.home}>
       <figure className={styles.image}>
@@ -19,3 +19,4 @@ export default function Home(params) {
     </section>
   );
 }
+export default Nickname;

@@ -1,5 +1,6 @@
 import { React } from "react";
 import "./App.css";
+import Nickname from "./components/Nickname/Nickname";
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       {/* <Home /> */}
       {/* <Profile /> */}
       {/* <PostMessage /> */}
+      <Nickname />
     </div>
   );
 }
