@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Nickname.module.scss";
-import { login } from "../../firebase/getData";
+import Colors from "./utils/Colors_username";
+import Square from "./Squares/Squares";
 
 function Nickname(params) {
   return (
@@ -14,6 +15,13 @@ function Nickname(params) {
         </h1>
         <input type="text" placeholder="Type your username" />
         <h3>Select your favorite color</h3>
+
+        <ul>
+          {Colors.map((color) => {
+            return <Square key={color.id} {...color} />;
+          })}
+        </ul>
+
         <button>CONTINUE</button>
       </form>
     </section>
