@@ -31,6 +31,7 @@
     grid-template-rows: 1fr 20px 35px;
     grid-template-columns: 80px 1fr;
     grid-gap: 10px;
+    height: 200px;
 
     .user_message {
       grid-row: 1 / -1;
@@ -44,12 +45,19 @@
       grid-row: 1/2;
       textarea {
         width: 90%;
+        height: 100%;
       }
     }
     .characters_message {
       width: 90%;
       display: flex;
       justify-content: space-between;
+      .num_characters {
+        color: #ffffff;
+      }
+      .max_characters {
+        color: #f50d5a;
+      }
     }
     .button_message {
       width: 90%;

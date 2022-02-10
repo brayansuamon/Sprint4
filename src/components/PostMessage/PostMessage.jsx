@@ -28,8 +28,8 @@ function PostMessage(params) {
           ></textarea>
         </section>
         <aside className={styles.characters_message}>
-          <p>NumberCh</p>
-          <p>Max 200.</p>
+          <p className={styles.num_characters}>NumberCh</p>
+          <p className={styles.max_characters}>Max 200.</p>
         </aside>
         <aside className={styles.button_message}>
           <button>POST</button>
