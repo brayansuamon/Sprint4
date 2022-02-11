@@ -1,0 +1,62 @@
+.body {
+  min-width: 50%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    width: 100%;
+    height: 65px;
+    display: grid;
+    grid-template-columns: 20% 40% 1fr;
+    align-items: center;
+    justify-items: center;
+    background-color: #250c23;
+    img {
+      height: 70%;
+      grid-column: span 1;
+      grid-row: span 1;
+      align-self: center;
+    }
+    .textdev {
+      width: 7rem;
+      height: 40%;
+    }
+  }
+  .write_message {
+    padding-top: 1rem;
+    background-color: #150714;
+    display: grid;
+    grid-template-rows: 1fr 20px 35px;
+    grid-template-columns: 80px 1fr;
+    grid-gap: 10px;
+
+    .user_message {
+      grid-row: 1 / -1;
+      img {
+        height: 50px;
+        width: 80px;
+      }
+    }
+    .section_message {
+      grid-column: 2 /-1;
+      grid-row: 1/2;
+      textarea {
+        width: 90%;
+      }
+    }
+    .characters_message {
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+    }
+    .button_message {
+      width: 90%;
+      text-align: end;
+      button {
+        width: 100px;
+      }
+    }
+  }
+}
