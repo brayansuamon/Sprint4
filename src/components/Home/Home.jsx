@@ -1,21 +1,9 @@
-import React, { useContext, useEffect } from "react";
-import { AppContext } from "../../context/AppContext";
-import { auth, login } from "../../firebase/getData";
+import React from "react";
 import useLogin from "../../hooks/useLogin";
 import styles from "./Home.module.scss";
 
 export default function Home(params) {
-  const { setUserLog, USER_INITIAL } = useContext(AppContext);
   const login = useLogin();
-
-  useEffect(() => {
-    const unsubscribeAuth = auth.onAuthStateChanged((user) => {
-      setUserLog(user || USER_INITIAL);
-    });
-    return () => {
-      unsubscribeAuth();
-    };
-  }, []);
 
   //button type="button" is to prevent default
   //Also we can add e.preventDefault() in Onclick function

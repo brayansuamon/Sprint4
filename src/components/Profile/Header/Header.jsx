@@ -1,29 +1,14 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import styles from "./Header.module.scss";
-import { auth, login, logout } from "../../../firebase/getData";
 import { Link } from "react-router-dom";
+import { AppContext } from "../../../context/AppContext";
+import { logout } from "../../../firebase/getData";
 export default function Header(params) {
-  /* function INITIAL_USER(params) {
-    uid: "";
-  }*/
-
-  //User Login
-  const [userLog, setUserLog] = useState(null);
-
-  //useEffect to UserLogin
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      setUserLog(user);
-      console.log(user);
-    });
-
-    return () => {};
-  }, []);
-
+  const { state } = useContext(AppContext);
+  console.log(state);
   return (
     <section>
-      {userLog ? (
+      {state.userData.uid !== "" ? (
         <div className={styles.navheader}>
           <header className={styles.header}>
             <span>
@@ -37,7 +22,7 @@ export default function Header(params) {
             </button>
           </header>
           <section className={styles.profile}>
-            <img src={userLog.photoURL} alt="UserLogged" />
+            <img src={state.userData.photoURL} alt="UserLogged" />
             <span>
               {/* {userLog.email} */}
               brayansuamon
@@ -59,9 +44,7 @@ export default function Header(params) {
           </nav>
         </div>
       ) : (
-        <div className={styles.login}>
-          <button onClick={login}>Login con Google</button>
-        </div>
+        <div className={styles.login}></div>
       )}
     </section>
   );

@@ -6,12 +6,11 @@ import { AppContext } from "../context/AppContext";
 function useLogin(params) {
   //Customs Hooks are to return something
 
-  const { setUserLog } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
 
   const login = () =>
     signInWithPopup(auth, provider).then((data) => {
-      setUserLog(data.user.uid);
-      console.log(data.user.uid);
+      dispatch({ type: "setUserData", payload: data });
     });
   return login;
 }

@@ -1,25 +1,13 @@
-import { React, createContext, useState } from "react";
+import { React, createContext, useReducer } from "react";
+import { INITIAL_STATE, reducer } from "../reducers/reducer";
 
 const AppContext = createContext(null);
 
 const StateContext = ({ children }) => {
-  const USER_INITIAL = {
-    uid: "",
-  };
-
-  const [userLog, setUserLog] = useState(USER_INITIAL);
-
-  // useEffect(() => {
-  //   const unsubscribeAuth = auth.onAuthStateChanged((user) => {
-  //     setUserLog(user || USER_INITIAL);
-  //   });
-  //   return () => {
-  //     unsubscribeAuth();
-  //   };
-  // }, []);
+  const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   return (
-    <AppContext.Provider value={{ userLog, setUserLog, USER_INITIAL }}>
+    <AppContext.Provider value={{ state, dispatch }}>
       {children}
     </AppContext.Provider>
   );
