@@ -5,15 +5,15 @@ import Profile from "../components/Profile/Profile";
 const routes = [
   {
     path: "/Nickname",
-    component: Nickname,
+    Component: Nickname,
   },
   {
     path: "./PostMessage",
-    component: PostMessage,
+    Component: PostMessage,
   },
   {
     path: "./Profile",
-    component: Profile,
+    Component: Profile,
   },
 ];
 export default routes;

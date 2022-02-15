@@ -3,15 +3,15 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import StateContext from "./context/AppContext";
+import { StateContext } from "./context/AppContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <StateContext>
+    <StateContext>
+      <BrowserRouter>
         <App />
-      </StateContext>
-    </BrowserRouter>
+      </BrowserRouter>
+    </StateContext>
   </React.StrictMode>,
   document.getElementById("root")
 );
