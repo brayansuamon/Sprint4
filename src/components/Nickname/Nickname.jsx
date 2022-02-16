@@ -10,8 +10,9 @@ import { db } from "../../firebase/getData";
 
 function Nickname(params) {
   //Bring state of user logged
-  const { state } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
 
+  //To catch color information (selected)
   let colorinfo = {
     id: "",
     value: "",
@@ -35,17 +36,18 @@ function Nickname(params) {
     });
   }
 
+  //Send info to Firebase
   const sendUsernameColor = async () => {
     //Create an object to send
     const dataSend = {
       color: colorselected.value,
       username: usernameselected,
     };
-
-    //Send to db info
+    //Send info to context
+    dispatch({ type: "setUserData", payload: dataSend });
+    //Send info to db
     try {
       const userSelected = doc(db, "Users", state.userData.uid);
-      // Set the "color and username" to user logged
       await updateDoc(userSelected, dataSend);
     } catch (e) {
       console.error("Error adding document: ", e);
@@ -64,6 +66,7 @@ function Nickname(params) {
         <input
           type="text"
           placeholder="Type your username"
+          maxLength={20}
           onChange={(e) => handleinput(e)}
         />
         <h3>

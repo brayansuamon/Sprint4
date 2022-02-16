@@ -4,7 +4,6 @@ import { AppContext } from "./context/AppContext";
 import "./App.css";
 import Home from "./components/Home/Home";
 import routes from "./routes/Routes";
-import Nickname from "./components/Nickname/Nickname";
 
 function App() {
   const { state } = useContext(AppContext);
@@ -20,10 +19,6 @@ function App() {
           })}
         <Route path="*" element={"not found"} />
       </Routes>
-      {/* <Home /> */}
-      {/* <Profile /> */}
-      {/* <PostMessage /> */}
-      {/* <Nickname /> */}
     </div>
   );
 }
