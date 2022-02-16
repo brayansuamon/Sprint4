@@ -1,5 +1,5 @@
 import { app } from "./firebase";
-import { getFirestore } from "firebase/firestore";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 //Authorization module
 import { GoogleAuthProvider, getAuth, signOut } from "firebase/auth";
@@ -11,13 +11,3 @@ export const db = getFirestore(app);
 export const auth = getAuth();
 export const provider = new GoogleAuthProvider();
 export const logout = () => signOut(auth);
-
-/*
-// Get a list of cities from your database
-async function getUsers(db) {
-  const usersCol = collection(db, "Users");
-  const userSnapshot = await getDocs(usersCol);
-  const userList = citySnapshot.docs.map((doc) => doc.data());
-  return userList;
-}
-*/

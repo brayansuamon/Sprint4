@@ -8,11 +8,11 @@ const routes = [
     Component: Nickname,
   },
   {
-    path: "./PostMessage",
+    path: "/PostMessage",
     Component: PostMessage,
   },
   {
-    path: "./Profile",
+    path: "/Profile",
     Component: Profile,
   },
 ];

@@ -13,5 +13,10 @@ let Squarecomponent = styled.div`
       background-color: ${color};
     `;
   }}
+
+  &:hover {
+    border: 2px solid white;
+    transform: scale(1.1, 1.1);
+  }
 `;
 export default Squarecomponent;

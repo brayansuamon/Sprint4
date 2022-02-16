@@ -21,6 +21,16 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state,
         userData: { ...state.userData, ...action.payload },
       };
+    case "getTweets":
+      return {
+        ...state,
+        tweets: action.payload,
+      };
+    case "setLoading":
+      return {
+        ...state,
+        loading: action.payload,
+      };
     default:
       return {
         ...state,

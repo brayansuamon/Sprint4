@@ -1,3 +1,4 @@
+import { getFirestore } from "firebase/firestore";
 import { React, createContext, useReducer } from "react";
 import { INITIAL_STATE, reducer } from "../reducers/reducer";
 
