@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import styles from "./PostMessage.module.scss";
 import { AppContext } from "../../context/AppContext";
 import { Link } from "react-router-dom";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../firebase/getData";
 const { body, header } = styles;
 
 function PostMessage(params) {
@@ -11,7 +13,39 @@ function PostMessage(params) {
   const [tweet, setTweet] = useState("");
 
   function handletext(e) {
+    //Tweet typing
     setTweet(e.target.value);
+  }
+  async function sendTweet(params) {
+    //Catch date of this moment to save tweet
+    const today = new Date();
+    const UNIXTweet = today.valueOf(); //Also, we can use Date.now()
+    //Convert to Date String
+    const dateTweet = new Date(UNIXTweet);
+    //Options to show date
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    //Change the way to look the date
+    const dateSend = dateTweet.toLocaleDateString("en-Co", options);
+
+    //Object initial to save tweet
+    const tweetSend = {
+      color: state.userData.color,
+      content: tweet,
+      date: dateSend,
+      id: state.userData.uid,
+      username: state.userData.username,
+    };
+
+    try {
+      await setDoc(doc(db, "Tweets", state.userData.uid), tweetSend);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+      return null;
+    }
   }
 
   return (
@@ -53,7 +87,7 @@ function PostMessage(params) {
           <p className={styles.max_characters}>Max 200.</p>
         </aside>
         <aside className={styles.button_message}>
-          <button>POST</button>
+          <button onClick={sendTweet}>POST</button>
         </aside>
       </section>
     </div>
