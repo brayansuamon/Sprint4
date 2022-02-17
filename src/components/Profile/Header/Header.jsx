@@ -5,20 +5,23 @@ import { AppContext } from "../../../context/AppContext";
 import { logout } from "../../../firebase/getData";
 export default function Header(params) {
   const { state } = useContext(AppContext);
-  console.log(state);
+
   return (
     <section>
       {state.userData.uid !== "" ? (
         <div className={styles.navheader}>
           <header className={styles.header}>
             <span>
-              <img src="./images/back.png" alt="Back" />
-              {/* {userLog.displayName} */}
-              brayansuamon
+              <Link to="/PostMessage">
+                <img src="./images/back.png" alt="Back" />
+                {state.userData.username}
+              </Link>
             </span>
             <button onClick={logout}>
-              LOGOUT
-              <img src="./images/Logout.png" alt="Log_out" />
+              <Link to="/">
+                LOGOUT
+                <img src="./images/Logout.png" alt="Log_out" />
+              </Link>
             </button>
           </header>
           <section className={styles.profile}>

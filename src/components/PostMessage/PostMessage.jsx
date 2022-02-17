@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import styles from "./PostMessage.module.scss";
 import { AppContext } from "../../context/AppContext";
+import { Link } from "react-router-dom";
 const { body, header } = styles;
 
 function PostMessage(params) {
@@ -16,11 +17,14 @@ function PostMessage(params) {
   return (
     <div className={body}>
       <header className={header}>
-        <img
-          className={styles.userphoto}
-          src={state.userData.photo}
-          alt="Username"
-        />
+        <Link className={styles.linkprofile} to="/Profile">
+          <img
+            className={styles.userphoto}
+            src={state.userData.photo}
+            alt="Username"
+          />
+        </Link>
+
         <img src="./images/image_logo_devs.png" alt="Logo_devs" />
         <img
           className={`${styles.textdev} ${styles.algo}`}
