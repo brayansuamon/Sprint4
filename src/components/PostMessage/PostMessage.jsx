@@ -34,7 +34,9 @@ function PostMessage(params) {
       </header>
       <section className={styles.write_message}>
         <picture className={styles.user_message}>
-          <img src={state.userData.photo} alt="username" />
+          <Link to="/Profile">
+            <img src={state.userData.photo} alt="username" />
+          </Link>
         </picture>
         <section className={styles.section_message}>
           <textarea
