@@ -2,12 +2,19 @@ import React, { useContext, useState } from "react";
 import styles from "./PostMessage.module.scss";
 import { AppContext } from "../../context/AppContext";
 import { Link } from "react-router-dom";
-import { doc, setDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "../../firebase/getData";
 const { body, header } = styles;
 
 function PostMessage(params) {
-  const { state } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
 
   //To catch the tweets in the text area
   const [tweet, setTweet] = useState("");
@@ -16,6 +23,23 @@ function PostMessage(params) {
     //Tweet typing
     setTweet(e.target.value);
   }
+  //Send Color and Username to Context
+  const BringData = async () => {
+    //Bring Data
+    const docRef = doc(db, "Users", state.userData.uid);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      //Prepare object to send info Context
+      const dataSend = {
+        color: docSnap.data().color,
+        username: docSnap.data().username,
+      };
+      //Send info to Context
+      dispatch({ type: "setUserData", payload: dataSend });
+    }
+  };
+  BringData();
+
   async function sendTweet(params) {
     //Catch date of this moment to save tweet
     const today = new Date();
@@ -36,16 +60,22 @@ function PostMessage(params) {
       color: state.userData.color,
       content: tweet,
       date: dateSend,
-      id: state.userData.uid,
+      uid: state.userData.uid,
       username: state.userData.username,
     };
 
     try {
-      await setDoc(doc(db, "Tweets", state.userData.uid), tweetSend);
+      //Send Tweet with dynamic ID
+      let tweetId = await addDoc(collection(db, "Tweets"), tweetSend);
+      //Add ID to tweet
+      const userSelected = doc(db, "Tweets", tweetId.id);
+      await updateDoc(userSelected, { id: tweetId.id });
     } catch (e) {
       console.error("Error adding document: ", e);
       return null;
     }
+    //Restore Input to ""
+    setTweet("");
   }
 
   return (

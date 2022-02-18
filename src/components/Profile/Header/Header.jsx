@@ -2,11 +2,19 @@ import React, { useContext } from "react";
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
 import { AppContext } from "../../../context/AppContext";
-import { logout } from "../../../firebase/getData";
+import { auth } from "../../../firebase/getData";
 import Username from "./styled-components/Username";
 import Imageuser from "./styled-components/Imageuser";
+import { signOut } from "firebase/auth";
 export default function Header(params) {
-  const { state } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
+
+  const logout = () => {
+    //Clear useContext
+    dispatch({ type: "INITIAL_STATE" });
+    //LogOut user
+    signOut(auth);
+  };
 
   return (
     <section>
