@@ -71,7 +71,7 @@ function Nickname(params) {
         />
         <h3>
           Select your favorite color:
-          <Name color={colorselected.value} id={colorselected.id}>
+          <Name color={"transparent"} style={{ color: colorselected.value }}>
             {colorselected.name}
           </Name>
         </h3>

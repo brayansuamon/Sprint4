@@ -17,6 +17,7 @@ function App() {
             console.log(path, Component);
             return <Route key={path} path={path} element={<Component />} />;
           })}
+        {/* <Route exact path="/Nickname" element={<Nickname />} /> */}
         <Route path="*" element={"not found"} />
       </Routes>
     </div>
