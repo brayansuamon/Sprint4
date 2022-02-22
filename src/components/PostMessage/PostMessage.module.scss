@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 @import "../../Variables.scss";
 
 .body {
@@ -81,7 +82,8 @@
         height: 80%;
         background-color: $green;
         border: none;
-        font-size: 17px;
+        font-size: 15px;
+        font-family: "Press Start 2P", cursive;
       }
     }
   }

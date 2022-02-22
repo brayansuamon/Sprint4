@@ -2,14 +2,7 @@ import React, { useContext, useState } from "react";
 import styles from "./PostMessage.module.scss";
 import { AppContext } from "../../context/AppContext";
 import { Link } from "react-router-dom";
-import {
-  addDoc,
-  collection,
-  doc,
-  getDoc,
-  setDoc,
-  updateDoc,
-} from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/getData";
 const { body, header } = styles;
 
