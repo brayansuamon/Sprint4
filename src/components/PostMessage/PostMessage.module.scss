@@ -75,8 +75,13 @@
     .button_message {
       width: 90%;
       text-align: end;
+
       button {
         width: 100px;
+        height: 80%;
+        background-color: $green;
+        border: none;
+        font-size: 17px;
       }
     }
   }
