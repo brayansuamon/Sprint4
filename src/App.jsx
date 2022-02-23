@@ -15,8 +15,9 @@ function App() {
         <Route exact path="/" element={<Home />} />
         {state.userData.uid !== "" &&
           routes.map(({ path, Component }) => {
-            console.log(path, Component);
-            return <Route key={path} path={path} element={<Component />} />;
+            return (
+              <Route key={path} exact path={path} element={<Component />} />
+            );
           })}
         <Route exact path="/PostMessage" element={<PostMessage />} />
         <Route path="*" element={"not found"} />

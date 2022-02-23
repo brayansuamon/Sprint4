@@ -1,25 +1,27 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./PostMessage.module.scss";
 import { AppContext } from "../../context/AppContext";
 import { Link } from "react-router-dom";
-import { addDoc, collection, doc, getDoc, updateDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  onSnapshot,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "../../firebase/getData";
 import ShowMessage from "../ShowMessage/ShowMessage";
 const { body, header } = styles;
 
 function PostMessage(params) {
   const { state, dispatch } = useContext(AppContext);
-
   //To catch the tweets in the text area
   const [tweet, setTweet] = useState("");
 
-  function handletext(e) {
-    //Tweet typing
-    setTweet(e.target.value);
-  }
   //Send Color and Username to Context
-  const BringData = async () => {
-    //Bring Data
+  const BringDataUser = async () => {
+    //Bring Data User Logged
     const docRef = doc(db, "Users", state.userData.uid);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
@@ -32,7 +34,24 @@ function PostMessage(params) {
       dispatch({ type: "setUserData", payload: dataSend });
     }
   };
-  BringData();
+
+  //To execute both functions One Time
+  useEffect(() => {
+    BringDataUser();
+    const unsub = onSnapshot(collection(db, "Tweets"), (doc) => {
+      console.log("Current data: ", doc.data());
+    });
+    return () => {
+      unsub();
+    };
+  }, []);
+
+  //We need add e.preventDefault() to avoid reload
+  function handletext(e) {
+    //Tweet typing
+    e.preventDefault();
+    setTweet(e.target.value);
+  }
 
   async function sendTweet(params) {
     //Catch date of this moment to save tweet
