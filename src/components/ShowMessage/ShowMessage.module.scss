@@ -1,0 +1,51 @@
+@import "../../Variables.scss";
+
+.show_message {
+  background-color: $purpleBackground;
+  height: 150px;
+  width: 100%;
+
+  margin-bottom: 3px;
+  padding: 1%;
+  border: none;
+  border-bottom: solid 3px #60265b;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "image username username  delete"
+    "image text     text      delete"
+    "image heart    empty     delete";
+  grid-gap: 10px;
+
+  .image_username {
+    grid-area: image;
+    text-align: center;
+  }
+  .header {
+    grid-area: username;
+  }
+  .delete_tweet {
+    grid-area: delete;
+    text-align: center;
+
+    img {
+      height: 20px;
+      width: 20px;
+    }
+  }
+  .article {
+    grid-area: text;
+  }
+  .heart_like {
+    grid-area: heart;
+    display: flex;
+    align-items: center;
+    img {
+      height: 25px;
+      width: 25px;
+      margin: 5px;
+    }
+  }
+}

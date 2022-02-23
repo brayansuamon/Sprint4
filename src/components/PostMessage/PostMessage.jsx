@@ -4,6 +4,7 @@ import { AppContext } from "../../context/AppContext";
 import { Link } from "react-router-dom";
 import { addDoc, collection, doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/getData";
+import ShowMessage from "../ShowMessage/ShowMessage";
 const { body, header } = styles;
 
 function PostMessage(params) {
@@ -113,6 +114,9 @@ function PostMessage(params) {
           <button onClick={sendTweet}>POST</button>
         </aside>
       </section>
+      <footer className={styles.footer}>
+        <ShowMessage />
+      </footer>
     </div>
   );
 }
