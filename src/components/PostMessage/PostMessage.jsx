@@ -42,7 +42,7 @@ function PostMessage(params) {
       docs.forEach((doc) => {
         docTweets.push(doc.data());
       });
-      dispatch({ type: "getTweets", payload: docTweets });
+      dispatch({ type: "getTweets", payload: docTweets.reverse() });
     });
     BringDataUser();
     return () => {
@@ -133,6 +133,11 @@ function PostMessage(params) {
             placeholder="Type Something"
             value={tweet}
             onChange={handletext}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                sendTweet();
+              }
+            }}
           ></textarea>
         </section>
         <aside className={styles.characters_message}>

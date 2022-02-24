@@ -5,18 +5,18 @@
   height: 200px;
   width: 100%;
 
-  padding: 2% 0;
+  padding: 4% 0;
   border-bottom: solid 3px #60265b;
 
   display: grid;
   grid-template-columns: 80px repeat(2, 1fr) 80px;
-  grid-template-rows: 30px 40px 40px 1fr;
+  grid-template-rows: 30px 1fr 1fr 1fr;
   grid-template-areas:
     "image username username  delete"
     "image text     text      delete"
     "image text     text      delete"
     "image heart    empty     delete";
-  grid-gap: 10px;
+  grid-gap: 5px;
 
   .image_username {
     grid-area: image;
@@ -41,7 +41,10 @@
   }
   .delete_tweet {
     grid-area: delete;
-    text-align: center;
+    align-self: start;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
 
     img {
       height: 20px;
