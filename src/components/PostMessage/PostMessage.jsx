@@ -37,12 +37,17 @@ function PostMessage(params) {
 
   //To execute both functions One Time
   useEffect(() => {
-    BringDataUser();
-    const unsub = onSnapshot(collection(db, "Tweets"), (doc) => {
-      console.log("Current data: ", doc.data());
+    const unsub = onSnapshot(collection(db, "Tweets"), (docs) => {
+      const docTweets = [];
+      docs.forEach((doc) => {
+        docTweets.push(doc.data());
+      });
+      dispatch({ type: "getTweets", payload: docTweets });
     });
+    BringDataUser();
     return () => {
       unsub();
+      BringDataUser();
     };
   }, []);
 
@@ -75,6 +80,7 @@ function PostMessage(params) {
       date: dateSend,
       uid: state.userData.uid,
       username: state.userData.username,
+      photo: state.userData.photo,
     };
 
     try {
@@ -102,7 +108,11 @@ function PostMessage(params) {
           />
         </Link>
 
-        <img src="./images/image_logo_devs.png" alt="Logo_devs" />
+        <img
+          className={styles.logodev}
+          src="./images/image_logo_devs.png"
+          alt="Logo_devs"
+        />
         <img
           className={`${styles.textdev} ${styles.algo}`}
           src="./images/text_logo_devs.png"
@@ -134,7 +144,13 @@ function PostMessage(params) {
         </aside>
       </section>
       <footer className={styles.footer}>
-        <ShowMessage />
+        {state.tweets.length > 0 ? (
+          state.tweets.map((tweet) => {
+            return <ShowMessage key={tweet.id} {...tweet} />;
+          })
+        ) : (
+          <h1>Error</h1>
+        )}
       </footer>
     </div>
   );

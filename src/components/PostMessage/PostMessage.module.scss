@@ -30,6 +30,10 @@
     }
     .userphoto {
       border-radius: 50%;
+      width: 50px;
+    }
+    .logodev {
+      width: 100px;
     }
     .textdev {
       width: 7rem;
@@ -95,6 +99,5 @@
     height: 50%;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
   }
 }

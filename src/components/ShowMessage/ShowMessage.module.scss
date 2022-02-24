@@ -2,19 +2,18 @@
 
 .show_message {
   background-color: $purpleBackground;
-  height: 150px;
+  height: 200px;
   width: 100%;
 
-  margin-bottom: 3px;
-  padding: 1%;
-  border: none;
+  padding: 2% 0;
   border-bottom: solid 3px #60265b;
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: 80px repeat(2, 1fr) 80px;
+  grid-template-rows: 30px 40px 40px 1fr;
   grid-template-areas:
     "image username username  delete"
+    "image text     text      delete"
     "image text     text      delete"
     "image heart    empty     delete";
   grid-gap: 10px;
@@ -22,9 +21,23 @@
   .image_username {
     grid-area: image;
     text-align: center;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-left: 1rem;
   }
   .header {
     grid-area: username;
+    .usercolor {
+      color: $purpleBackground;
+      font-family: "Press Start 2P", cursive;
+    }
+    .date {
+      color: $white;
+      font-family: "Press Start 2P", cursive;
+      font-weight: normal;
+      font-size: 10px;
+    }
   }
   .delete_tweet {
     grid-area: delete;
@@ -35,13 +48,24 @@
       width: 20px;
     }
   }
+  .hide_delete {
+    visibility: hidden;
+  }
   .article {
     grid-area: text;
+    color: $white;
+    overflow-wrap: break-word;
+    // overflow-y: scroll;
+    font-family: "Press Start 2P", cursive;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 1.6;
   }
   .heart_like {
     grid-area: heart;
     display: flex;
     align-items: center;
+    color: $white;
     img {
       height: 25px;
       width: 25px;

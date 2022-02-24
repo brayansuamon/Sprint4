@@ -19,7 +19,7 @@ function App() {
               <Route key={path} exact path={path} element={<Component />} />
             );
           })}
-        <Route exact path="/PostMessage" element={<PostMessage />} />
+        {/* <Route exact path="/PostMessage" element={<PostMessage />} /> */}
         <Route path="*" element={"not found"} />
       </Routes>
     </div>
