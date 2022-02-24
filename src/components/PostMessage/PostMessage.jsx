@@ -42,7 +42,14 @@ function PostMessage(params) {
       docs.forEach((doc) => {
         docTweets.push(doc.data());
       });
-      dispatch({ type: "getTweets", payload: docTweets.reverse() });
+      //Order Tweets by date
+      //Slice is to create a copy of the array
+      //Sort order dates
+      const sortedTweets = docTweets
+        .slice()
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      dispatch({ type: "getTweets", payload: sortedTweets });
     });
     BringDataUser();
     return () => {
