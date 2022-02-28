@@ -12,7 +12,7 @@ const routes = [
     Component: PostMessage,
   },
   {
-    path: "/Profile",
+    path: "/Profile/*",
     Component: Profile,
   },
 ];

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styles from "./Header.module.scss";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { AppContext } from "../../../context/AppContext";
 import { auth } from "../../../firebase/getData";
 import Username from "./styled-components/Username";
@@ -8,6 +8,8 @@ import Imageuser from "./styled-components/Imageuser";
 import { signOut } from "firebase/auth";
 export default function Header(params) {
   const { state, dispatch } = useContext(AppContext);
+  //To navigate between pages
+  let navigate = useNavigate();
 
   const logout = () => {
     //Clear useContext
@@ -47,14 +49,24 @@ export default function Header(params) {
         <nav>
           <ul className={styles.navprofile}>
             <li>
-              <Link className={styles.underlined} to="/post">
+              <button
+                className={styles.underlined}
+                onClick={() => {
+                  navigate("/Profile/post");
+                }}
+              >
                 POST
-              </Link>
+              </button>
             </li>
             <li>
-              <Link className={styles.underlined} to="/favorites">
+              <button
+                className={styles.underlined}
+                onClick={() => {
+                  navigate("/Profile/favorites");
+                }}
+              >
                 FAVORITES
-              </Link>
+              </button>
             </li>
           </ul>
         </nav>

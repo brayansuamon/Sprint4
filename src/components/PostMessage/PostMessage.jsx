@@ -107,7 +107,7 @@ function PostMessage(params) {
   return (
     <div className={body}>
       <header className={header}>
-        <Link className={styles.linkprofile} to="/Profile">
+        <Link className={styles.linkprofile} to="/Profile/post">
           <img
             className={styles.userphoto}
             src={state.userData.photo}
@@ -128,7 +128,7 @@ function PostMessage(params) {
       </header>
       <section className={styles.write_message}>
         <picture className={styles.user_message}>
-          <Link to="/Profile">
+          <Link to="/Profile/post">
             <img src={state.userData.photo} alt="username" />
           </Link>
         </picture>
