@@ -19,7 +19,7 @@ function App() {
               <Route key={path} exact path={path} element={<Component />} />
             );
           })}
-        <Route exact path="/Profile/*" element={<Profile />} />
+        <Route exact path="/PostMessage" element={<Profile />} />
         <Route path="*" element={"not found"} />
       </Routes>
     </div>

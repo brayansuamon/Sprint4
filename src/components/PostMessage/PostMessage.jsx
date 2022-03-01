@@ -88,6 +88,8 @@ function PostMessage(params) {
       uid: state.userData.uid,
       username: state.userData.username,
       photo: state.userData.photo,
+      likes: "",
+      followers: [],
     };
 
     try {

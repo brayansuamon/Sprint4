@@ -68,6 +68,12 @@
     grid-area: heart;
     display: flex;
     align-items: center;
+
+    //To button
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+
     color: $white;
     img {
       height: 25px;
