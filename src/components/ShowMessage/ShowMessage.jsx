@@ -72,7 +72,7 @@ const ShowMessage = ({ ...tweet }) => {
           setheartColor(!heartColor);
         }}
       >
-        {heartColor ? (
+        {heartColor || tweet.followers.includes(state.userData.uid) ? (
           <img src="./images/Like.svg" alt="Heart" />
         ) : (
           <img src="./images/Dislike.svg" alt="Heart" />
