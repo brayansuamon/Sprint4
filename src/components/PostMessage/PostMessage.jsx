@@ -12,7 +12,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase/getData";
 import ShowMessage from "../ShowMessage/ShowMessage";
-const { body, header } = styles;
+const { postmessage, header } = styles;
 
 function PostMessage(params) {
   const { state, dispatch } = useContext(AppContext);
@@ -107,7 +107,7 @@ function PostMessage(params) {
   }
 
   return (
-    <div className={body}>
+    <div className={postmessage}>
       <header className={header}>
         <Link className={styles.linkprofile} to="/Profile/post">
           <img

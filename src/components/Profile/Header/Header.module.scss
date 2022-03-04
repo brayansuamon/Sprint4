@@ -1,7 +1,8 @@
 @import "../../../Variables.scss";
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 .navheader {
-  width: 50vw;
+  min-width: 50%;
+  max-width: 600px;
   margin: 0 auto;
 
   .header {

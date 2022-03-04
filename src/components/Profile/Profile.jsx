@@ -1,6 +1,7 @@
 import { React, useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
+import styles from "./Profile.module.scss";
 
 import Header from "./Header/Header";
 import ContainerTweets from "./ContainerTweets/ContainerTweets";
@@ -17,7 +18,7 @@ function Profile() {
   const followers = tweets.filter((tweet) => tweet.followers.includes(uid));
 
   return (
-    <section>
+    <section className={styles.Profile}>
       <Header />
       <Routes>
         <Route path="/post" element={<ContainerTweets tweets={posted} />} />
