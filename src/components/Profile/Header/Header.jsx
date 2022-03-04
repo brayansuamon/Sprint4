@@ -8,6 +8,7 @@ import Imageuser from "./styled-components/Imageuser";
 import { signOut } from "firebase/auth";
 export default function Header(params) {
   const { state, dispatch } = useContext(AppContext);
+
   //To navigate between pages
   let navigate = useNavigate();
 
@@ -18,6 +19,13 @@ export default function Header(params) {
     signOut(auth);
   };
 
+  //Event to change class of two siblings
+  const handleClass = (actual, sibling) => {
+    actual.classList.remove(`${styles.inactive}`);
+    actual.classList.add(`${styles.active}`);
+    sibling.classList.remove(`${styles.active}`);
+    sibling.classList.add(`${styles.inactive}`);
+  };
   return (
     <section>
       {/* {state.userData.uid !== "" ? ( */}
@@ -46,29 +54,26 @@ export default function Header(params) {
             {state.userData.username}
           </Username>
         </section>
-        <nav>
-          <ul className={styles.navprofile}>
-            <li>
-              <button
-                className={styles.underlined}
-                onClick={() => {
-                  navigate("/Profile/post");
-                }}
-              >
-                POST
-              </button>
-            </li>
-            <li>
-              <button
-                className={styles.underlined}
-                onClick={() => {
-                  navigate("/Profile/favorites");
-                }}
-              >
-                FAVORITES
-              </button>
-            </li>
-          </ul>
+        <nav className={styles.navprofile}>
+          <button
+            className={`${styles.underlined} ${styles.active}`}
+            onClick={(e) => {
+              handleClass(e.target, e.target.nextSibling);
+              navigate("/Profile/post");
+            }}
+          >
+            POST
+          </button>
+
+          <button
+            className={`${styles.underlined} ${styles.inactive}`}
+            onClick={(e) => {
+              handleClass(e.target, e.target.previousSibling);
+              navigate("/Profile/favorites");
+            }}
+          >
+            FAVORITES
+          </button>
         </nav>
       </div>
       {/*  ) : ( // <div className={styles.login}></div>

@@ -1,48 +1,32 @@
-import { React, useContext, useEffect } from "react";
+import { React, useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
-import ShowMessage from "../ShowMessage/ShowMessage";
 
 import Header from "./Header/Header";
+import ContainerTweets from "./ContainerTweets/ContainerTweets";
 
 function Profile() {
-  const state = useContext(AppContext);
+  const {
+    state: {
+      tweets,
+      userData: { uid },
+    },
+  } = useContext(AppContext);
 
-  const posted = state.tweets.filter((tweet) => {
-    return tweet.uid === state.userData.uid;
-  });
-  useEffect(() => {
-    console.log(posted);
-    return () => {};
-  }, []);
+  const posted = tweets.filter((tweet) => tweet.uid === uid);
+  const followers = tweets.filter((tweet) => tweet.followers.includes(uid));
+
   return (
-    <body>
+    <section>
       <Header />
       <Routes>
+        <Route path="/post" element={<ContainerTweets tweets={posted} />} />
         <Route
-          exact
-          path="/post"
-          render={() => {
-            <>
-              {posted.map((tweet) => {
-                return <ShowMessage key={tweet.id} {...tweet} />;
-              })}
-            </>;
-          }}
-        />
-        <Route
-          exact
-          path="favorites"
-          render={() => {
-            <>
-              {posted.map((tweet) => {
-                return <ShowMessage key={tweet.id} {...tweet} />;
-              })}
-            </>;
-          }}
+          path="/favorites"
+          element={<ContainerTweets tweets={followers} />}
         />
       </Routes>
-    </body>
+    </section>
   );
 }
 
