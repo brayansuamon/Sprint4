@@ -5,6 +5,10 @@ import { AppContext } from "../../context/AppContext";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/getData";
 
+//Import images to avoid loading errors
+import Like from "/images/Like.svg";
+import Dislike from "/images/Dislike.svg";
+import Delete from "/images/Delete.svg";
 const ShowMessage = ({ ...tweet }) => {
   const { state } = useContext(AppContext);
   //UseState to change the Heart color
@@ -73,9 +77,9 @@ const ShowMessage = ({ ...tweet }) => {
         }}
       >
         {heartColor || tweet.followers.includes(state.userData.uid) ? (
-          <img src="./images/Like.svg" alt="Heart" />
+          <img src={Like} alt="Heart" />
         ) : (
-          <img src="./images/Dislike.svg" alt="Heart" />
+          <img src={Dislike} alt="Heart" />
         )}
         <span className={styles.likes}>{tweet.likes ? tweet.likes : 0}</span>
       </button>
@@ -85,8 +89,7 @@ const ShowMessage = ({ ...tweet }) => {
           handlerDelete(tweet.id);
         }}
       >
-        {/* <div className={styles.delete_tweet}> */}
-        <img src="./images/Delete.svg" alt="Delete" />
+        <img src={Delete} alt="Delete" />
       </button>
     </div>
   );

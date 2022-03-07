@@ -6,6 +6,9 @@ import { auth } from "../../../firebase/getData";
 import Username from "./styled-components/Username";
 import Imageuser from "./styled-components/Imageuser";
 import { signOut } from "firebase/auth";
+//We need import some images to avoid loading errors
+import back from "/images/back.png";
+import Logout from "/images/Logout.png";
 export default function Header(params) {
   const { state, dispatch } = useContext(AppContext);
 
@@ -33,14 +36,14 @@ export default function Header(params) {
         <header className={styles.header}>
           <span>
             <Link className={styles.Back} to="/PostMessage">
-              <img src="./images/back.png" alt="Back" />
+              <img src={back} alt="Back" />
               <div>{state.userData.username}</div>
             </Link>
           </span>
           <button onClick={logout}>
             <Link className={styles.Logout} to="/">
               <div> LOGOUT </div>
-              <img src="./images/Logout.png" alt="Log_out" />
+              <img src={Logout} alt="Log_out" />
             </Link>
           </button>
         </header>
