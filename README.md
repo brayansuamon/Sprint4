@@ -2,7 +2,7 @@
 Build a full-stack web application that simulates a Twitter-style Social Network but aimed at programmers
 
 ## Design
-You can check the design and compare with the result.
+You can check the design and compare with the website.
 
 https://www.figma.com/file/exmyAZeGSjZI3Rg74rDERR/Devs-United?node-id=36%3A512
 
