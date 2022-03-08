@@ -67,6 +67,9 @@
         width: 90%;
         height: 100%;
         font-size: 17px;
+        background-color: $white;
+        color: $black;
+        border: none;
       }
     }
     .characters_message {
@@ -74,7 +77,7 @@
       display: flex;
       justify-content: space-between;
       .num_characters {
-        color: #ffffff;
+        color: $white;
       }
       .max_characters {
         color: $likes;
