@@ -4,6 +4,7 @@ import { AppContext } from "./context/AppContext";
 import styles from "./App.module.scss";
 import Home from "./components/Home/Home";
 import routes from "./routes/Routes";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   const { state } = useContext(AppContext);
@@ -18,7 +19,7 @@ function App() {
               <Route key={path} exact path={path} element={<Component />} />
             );
           })}
-        <Route path="*" element={"not found"} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
