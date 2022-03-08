@@ -11,10 +11,10 @@ https://users-d9f6d.firebaseapp.com/
 
 ```js
 const Tools = {
-ReactJS: [Css, HTML, JavaScript]
-Styles Css:[SASS,Styled-Components]
-Hooks: [UseContext,UseEffect, UseReducer, UseState] 
-Firebase:[Hosting, Firestore, Authentication]
+ReactJS: [Css, Html, JavaScript]
+STYLES CSS:[Sass,Styled Components]
+HOOKS: [UseContext,UseEffect, UseReducer, UseState] 
+FIREBASE:[Hosting, Firestore, Authentication]
 OS:[Linux, GitLens]
 }
 ```
