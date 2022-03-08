@@ -9,13 +9,16 @@ https://www.figma.com/file/exmyAZeGSjZI3Rg74rDERR/Devs-United?node-id=36%3A512
 ## Website
 https://users-d9f6d.firebaseapp.com/
 
+## Technologies
+
 ```js
 const Tools = {
 ReactJS: [Css, Html, JavaScript]
 STYLES CSS:[Sass,Styled Components]
 HOOKS: [UseContext,UseEffect, UseReducer, UseState] 
 FIREBASE:[Hosting, Firestore, Authentication]
-OS:[Linux, GitLens]
+OS:[Linux]
+OTHERS: [GitLens, Vite-js]
 }
 ```
 ```
