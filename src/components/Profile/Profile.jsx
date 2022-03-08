@@ -19,14 +19,16 @@ function Profile() {
 
   return (
     <section className={styles.Profile}>
-      <Header />
-      <Routes>
-        <Route path="/post" element={<ContainerTweets tweets={posted} />} />
-        <Route
-          path="/favorites"
-          element={<ContainerTweets tweets={followers} />}
-        />
-      </Routes>
+      <Header className={styles.header} />
+      <div className={styles.routes}>
+        <Routes>
+          <Route path="/post" element={<ContainerTweets tweets={posted} />} />
+          <Route
+            path="/favorites"
+            element={<ContainerTweets tweets={followers} />}
+          />
+        </Routes>
+      </div>
     </section>
   );
 }

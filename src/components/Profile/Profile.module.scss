@@ -1,4 +1,11 @@
 .Profile {
   width: 100%;
   height: 100%;
+  .header {
+    height: 50%;
+  }
+  .routes {
+    height: 50%;
+    min-height: 350px;
+  }
 }
