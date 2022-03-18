@@ -14,7 +14,7 @@ https://users-d9f6d.firebaseapp.com/
 ```js
 const Tools = {
 ReactJS: [Css, Html, JavaScript]
-STYLES CSS:[Sass,Styled Components]
+STYLES CSS:[Sass,Styled Components, Grid, Flexbox]
 HOOKS: [UseContext,UseEffect, UseReducer, UseState] 
 FIREBASE:[Hosting, Firestore, Authentication]
 OS:[Linux]
