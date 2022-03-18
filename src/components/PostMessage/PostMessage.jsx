@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase/getData";
 import ShowMessage from "../ShowMessage/ShowMessage";
+import ConfirmationDelete from "../ShowMessage/ConfirmationDelete/ConfirmationDelete";
 const { postmessage, header } = styles;
 
 function PostMessage(params) {
@@ -158,13 +159,11 @@ function PostMessage(params) {
         </aside>
       </section>
       <footer className={styles.footer}>
-        {state.tweets.length > 0 ? (
+        {state.tweets.length > 0 &&
           state.tweets.map((tweet) => {
             return <ShowMessage key={tweet.id} {...tweet} />;
-          })
-        ) : (
-          <h1>Error</h1>
-        )}
+          })}
+        {state.open && <ConfirmationDelete />}
       </footer>
     </div>
   );

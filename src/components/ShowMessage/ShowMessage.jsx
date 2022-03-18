@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import styles from "./ShowMessage.module.scss";
 import UserColor from "./styled-components/UserColor";
 import { AppContext } from "../../context/AppContext";
-import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/getData";
 
 //Import images to avoid loading errors
@@ -10,7 +10,7 @@ import Like from "/images/Like.svg";
 import Dislike from "/images/Dislike.svg";
 import Delete from "/images/Delete.svg";
 const ShowMessage = ({ ...tweet }) => {
-  const { state } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
   //UseState to change the Heart color
   const [heartColor, setheartColor] = useState(false);
 
@@ -20,9 +20,11 @@ const ShowMessage = ({ ...tweet }) => {
       ? `${styles.show_delete}`
       : `${styles.hide_delete}`;
 
-  const handlerDelete = async (tweetDelete) => {
-    //Delete Tweet from Firebase
-    await deleteDoc(doc(db, "Tweets", tweetDelete));
+  const handlerDelete = (tweetDelete) => {
+    //Send id of tweet to delete
+    dispatch({ type: "tweetToDelete", payload: tweetDelete });
+    //Activate State of Open Confirmation
+    dispatch({ type: "openConfirmation", payload: true });
   };
   //To show likes of tweets
   const HandlerLikes = async (id, likes = 0, followers, uid) => {

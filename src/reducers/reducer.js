@@ -38,6 +38,16 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state,
         loading: action.payload,
       };
+    case "tweetToDelete":
+      return {
+        ...state,
+        tweetToDelete: action.payload,
+      };
+    case "openConfirmation":
+      return {
+        ...state,
+        open: action.payload,
+      };
     default:
       return {
         ...state,
