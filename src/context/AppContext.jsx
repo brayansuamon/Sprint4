@@ -34,10 +34,11 @@ const StateContext = ({ children }) => {
   useEffect(() => {
     //Bring Data User Logged
     const BringDataUser = async () => {
-      const docRef = doc(db, "Users", state.userData.uid);
+      const docRef = doc(db, "Users", INITIAL_STATE.userData.uid);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         //Prepare object to send info Context
+        console.log(docSnap.data(), docSnap.data().email);
         const dataSend = {
           color: docSnap.data().color,
           username: docSnap.data().username,
@@ -63,9 +64,8 @@ const StateContext = ({ children }) => {
         .sort((a, b) => new Date(b.date) - new Date(a.date));
 
       dispatch({ type: "getTweets", payload: sortedTweets });
-      console.log("It works");
     });
-
+    BringDataUser();
     return () => {
       unsub();
       BringDataUser();
