@@ -45,6 +45,7 @@ function useLogin(params) {
           photo: data.user.photoURL,
           uid: data.user.uid,
         };
+        localStorage.setItem("uid", data.user.uid);
         dispatch({ type: "setUserData", payload: dataSend });
         userValidation(dataSend);
       });
